@@ -6,6 +6,9 @@
 	<meta charset="utf-8">
 </head>
 <body>
+<?php require 'connect.php'; ?>
+<h1>Hello World</h1>
+<p>Page réservation salles ACS</p>
 
 </body>
 </html>

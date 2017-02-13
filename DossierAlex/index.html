@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="icon" type="image/png" href="favicon.png" />
+	<title>reZa | Réservation de Salle</title>
+		<link rel="stylesheet" type="text/css" href="https://fullcalendar.io/css/base.css" />
+
+		<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.min.css">
+
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.4/build/jquery.datetimepicker.full.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				var todayDate = moment().startOf("day");
+				var YM = todayDate.format("YYYY-MM");
+				var YESTERDAY = todayDate.clone().subtract(1,"day").format("YYYY-MM-DD");
+				var TODAY = todayDate.format("YYYY-MM-DD");
+				var TOMORROW = todayDate.clone().add(1,"day").format("YYYY-MM-DD");
+
+				$("#calendar").fullCalendar({
+					header:{
+						left:"prev,next today",
+						center:"title",
+						right:"month,agendaWeek,agendaDay,listWeek"
+					},
+					eventLimit:true, // allow "more" link when too many events
+					navLinks:true,
+					events:[
+						{
+							title: "All Day Event",
+							start: YM + "-01"
+						},{
+							title: "Long Event",
+							start: YM + "-07",
+							end: YM + "-10"
+						},{
+							id: 999,
+							title: "Repeating Event",
+							start: YM + "-09T16:00:00"
+						},{
+							id: 999,
+							title: "Repeating Event",
+							start: YM + "-16T16:00:00"
+						},{
+							title: "Conference",
+							start: YESTERDAY,
+							end: TOMORROW
+						},{
+							title: "Meeting",
+							start: TODAY + "T10:30:00",
+							end: TODAY + "T12:30:00"
+						},{
+							title: "Lunch",
+							start: TODAY + "T12:00:00"
+						},{
+							title: "Meeting",
+							start: TODAY + "T14:30:00"
+						},{
+							title: "Happy Hour",
+							start: TODAY + "T17:30:00"
+						},{
+							title: "Dinner",
+							start: TODAY + "T20:00:00"
+						},{
+							title: "Birthday Party",
+							start: TOMORROW + "T07:00:00"
+						},{
+							title: "Click for Google",
+							url: "http://google.com/",
+							start: YM + "-28"
+						}
+					]
+				});
+			});
+		</script>
+
+</head>
+
+<body>
+
+<!-- 	** HEADER AVEC TITRE ** -->
+
+	<header class="header">
+
+
+
+
+
+
+
+	</header>
+
+
+<!-- 	** IMAGE ACCUEIL ** -->
+
+	<h2 class="titre_accueil">Titre de type titre</h2>
+
+	<div class="btn-accueil">
+
+		<a href="#calendrier"><button class="btn btn-default btn-calendrier">Voir le calendrier</button></a>
+		<a href="#reserver"><button class="btn btn-default btn-reservation">Reserver une salle</button></a>
+
+	</div>
+
+	<img class="img-accueil" src="accueil.jpg">
+
+
+<!-- 	** CALENDRIER ** -->
+
+		<div id="calendrier">
+			<h2 class="titre_calendar">Calendrier Titre</h2>
+			<section class="calendar">
+				<div id="body" class="section">
+					<div>
+						<div class="two-col">
+							<div class="content">
+								<div id="calendar"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+<!-- 	** FORMULAIRE ** -->
+
+		<div id="reserver" class="form">
+			<h2>Formulaire de réservation de salle</h2>
+			<form action="#">
+				<p><i>Les champs marqué par </i><em>*</em> sont <em>obligatoires</em></p>
+					<fieldset>
+						<legend>Contact</legend>
+							<label for="nom">Nom <em>*</em></label>
+							<input id="nom" placeholder="Entrez votre Nom..."><br>
+							<label for="telephone">Portable <em>*</em></label>
+							<input id="telephone" type="tel" placeholder="06-00-00-00-00"><br>
+							<label for="email">Email <em>*</em></label>
+							<input id="email" type="email" placeholder="jesuisunpoisson@dansocean.fr" pattern="[a-zA-Z]*.[a-zA-Z]*@mail.fr"><br>
+							<label for="email">Date <em>*</em></label>
+							<input type="text" value="" id="datetimepicker"/>
+					</fieldset>
+					<fieldset>
+						<legend>Information personnelles</legend>
+						<label for="age">Age <em>*</em></label>
+						<input id="age" type="number" pattern="[0-9]{2}"><br>
+						<label for="salle">Salle <em>*</em></label>
+						<select id="salle">
+							<option name="salle">Salle 1</option>
+							<option name="salle">Salle 2</option>
+							<option name="salle">Salle 3</option>
+						</select><br>
+						<label for="comments">Pourquoi louez cette salle?</label>
+						<textarea id="comments"></textarea>
+					</fieldset>
+				  <p><input type="submit" value="Soummettre"></p>
+			</form>
+		</div>
+
+
+<!-- 	** INFOS ET TEXTE ** -->
+
+	<section class="informations">
+		
+
+
+	</section>
+
+
+<!-- 	** FOOTER ** -->
+
+	<footer>
+		
+
+
+
+	</footer>
+
+
+		<script>
+			$("#datetimepicker").datetimepicker({
+				onGenerate:function(ct){
+					$(this).find(".xdsoft_date.xdsoft_weekend")
+						.addClass("xdsoft_disabled");
+				},
+				weekends:["01.01.2014","02.01.2014","03.01.2014","04.01.2014","05.01.2014","06.01.2014"]
+			});
+		</script>
+
+</body>
+</html>
